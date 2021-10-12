@@ -3,20 +3,19 @@ import java.util.Scanner;
 
 public class Main {
     public static ArrayList<Integer> parseNum(String args) throws IncorrectException {
-        String[] splitData = args.split(" ");
+        String[] spNum = args.split(" ");
         ArrayList<Integer> list = new ArrayList<>();
-        if (splitData.length != 20) {
-            throw new IncorrectException("Incorrect data: " + args);
+        if (spNum.length != 20) {
+            throw new IncorrectException("Incorrect numbers quantity: " + args);
         }
         else {
             for (int i = 0; i <= 19; i++) {
                 try {
-                    list.add(Integer.parseInt(splitData[i]));
+                    list.add(Integer.parseInt(spNum[i]));
                 }
                 catch (NumberFormatException ex) {
                     throw new IncorrectException("Incorrect data: " + args);
                 }
-                //finally
             }
         }
         return list;
@@ -34,14 +33,17 @@ public class Main {
             }
             if (listMain.get(i) % 2 == 0) {
                 numTwo.add(listMain.get(i));
-                continue;
+                //continue;
             }
-            numOther.add(listMain.get(i));
+            if ((listMain.get(i) % 2 == 0 && listMain.get(i) % 3 == 0) || (listMain.get(i) % 2 != 0 && listMain.get(i) % 3 != 0)) {
+                numOther.add(listMain.get(i));
+            }
         }
+        printList(numThree);
+        printList(numTwo);
+        printList(numOther);
     }
     public static void printList(ArrayList<Integer> list) {
-        for (Integer x: list) {
-            System.out.println(x);
-        }
+            System.out.println(list);
     }
 }

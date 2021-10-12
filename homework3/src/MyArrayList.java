@@ -1,5 +1,4 @@
 import java.util.NoSuchElementException;
-
 /**
  * Должен наследовать SimpleList
  *
